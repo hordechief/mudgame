@@ -1,6 +1,6 @@
 *.VIR
 *.exe
-*.dev
-*.win
+#*.dev
+#*.win
 *.o
-*.layout
+#*.layout

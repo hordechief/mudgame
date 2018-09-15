@@ -1,8 +1,9 @@
 // MUD Programming
 // Ron Penton
 // (C)2003
-// Demo02-02.cpp - Hello Internet! Client
-// This program will start connect to a server, and send a string of data to it
+// Demo02-04.cpp - Hello Internet! Client
+// This program will start connect to a server, and send strings of data that
+// you type in.
 
 
 
@@ -102,18 +103,31 @@ int main()
     cout << "Socket connected!" << endl;
     // END CODE BLOCK 2.4 - creating a connecting data socket
 
-    cout << "sending message: " << message << "..." << endl;
 
-    // send data
-    err = send( sock, message, strlen( message ) + 1, 0 );
 
-    if( err == -1 )
+    bool done = false;
+    cout << "Type data to send now:" << endl;
+
+    while( !done )
     {
-        cout << "Socket sending error!" << endl;
-        return 0;
-    }
+        // get data to send
+        cin.getline( message, 128 );
 
-    cout << "Data Sent!" << endl;
+        // send data
+        err = send( sock, message, strlen( message ) + 1, 0 );
+
+        if( err == -1 )
+        {
+            cout << "Socket sending error!" << endl;
+            return 0;
+        }
+
+        if( strcmp( message, "servquit" ) == 0 || 
+            strcmp( message, "quit" ) == 0 )
+        {
+            done = true;
+        }
+    }
     
     shutdown( sock, 2 );
     CloseSocket( sock );
