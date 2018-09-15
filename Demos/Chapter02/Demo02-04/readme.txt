@@ -1,0 +1,13 @@
+MUD Game Programming
+(C) 2003 Ron Penton
+
+
+All of the demos in this book can be compiled by following these procedures:
+VC6: open up the .dsw file, and hit compile
+VC7: open up the .sln file, and hit compile
+GCC: type "make"
+
+
+This is Demo 2.4, which runs a simple internet client.
+To run this, first run Demo 2.3 on a computer somewhere, and then run this.
+Enter the IP address of the computer you are running Demo 2.3 on to connect.

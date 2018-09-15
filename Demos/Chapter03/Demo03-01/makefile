@@ -1,0 +1,19 @@
+# Compiler is G++
+CXX = g++
+
+
+#MUDLib directory
+MUDLIBDIR = ../../../Libraries
+SOCKETLIBDIR = $(MUDLIBDIR)/SocketLib
+THREADLIBDIR = $(MUDLIBDIR)/ThreadLib
+BASICLIBDIR  = $(MUDLIBDIR)/BasicLib
+
+# libraries
+LIBS = -lpthread -ldl -lutil
+
+# flags
+CFLAGS = -I$(MUDLIBDIR)
+
+link: $(wildcard *.cpp)
+	$(CXX) $(CFLAGS) $(THREADLIBDIR)/*.cpp -c;
+	$(CXX) $(CFLAGS) $(LIBS) *.cpp *.o
