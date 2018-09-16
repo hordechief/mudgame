@@ -4,9 +4,9 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = server.o
-LINKOBJ  = server.o
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc "D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libws2_32.a"
+OBJ      = server.o ../Libraries/SocketLib/SocketLibErrors.o ../Libraries/SocketLib/SocketLibSocket.o ../Libraries/SocketLib/SocketLibSystem.o ../Libraries/SocketLib/SocketSet.o ../Libraries/SocketLib/Telnet.o
+LINKOBJ  = server.o ../Libraries/SocketLib/SocketLibErrors.o ../Libraries/SocketLib/SocketLibSocket.o ../Libraries/SocketLib/SocketLibSystem.o ../Libraries/SocketLib/SocketSet.o ../Libraries/SocketLib/Telnet.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows "D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libws2_32.a"
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = server.exe
@@ -26,3 +26,18 @@ $(BIN): $(OBJ)
 
 server.o: server.cpp
 	$(CPP) -c server.cpp -o server.o $(CXXFLAGS)
+
+../Libraries/SocketLib/SocketLibErrors.o: ../Libraries/SocketLib/SocketLibErrors.cpp
+	$(CPP) -c ../Libraries/SocketLib/SocketLibErrors.cpp -o ../Libraries/SocketLib/SocketLibErrors.o $(CXXFLAGS)
+
+../Libraries/SocketLib/SocketLibSocket.o: ../Libraries/SocketLib/SocketLibSocket.cpp
+	$(CPP) -c ../Libraries/SocketLib/SocketLibSocket.cpp -o ../Libraries/SocketLib/SocketLibSocket.o $(CXXFLAGS)
+
+../Libraries/SocketLib/SocketLibSystem.o: ../Libraries/SocketLib/SocketLibSystem.cpp
+	$(CPP) -c ../Libraries/SocketLib/SocketLibSystem.cpp -o ../Libraries/SocketLib/SocketLibSystem.o $(CXXFLAGS)
+
+../Libraries/SocketLib/SocketSet.o: ../Libraries/SocketLib/SocketSet.cpp
+	$(CPP) -c ../Libraries/SocketLib/SocketSet.cpp -o ../Libraries/SocketLib/SocketSet.o $(CXXFLAGS)
+
+../Libraries/SocketLib/Telnet.o: ../Libraries/SocketLib/Telnet.cpp
+	$(CPP) -c ../Libraries/SocketLib/Telnet.cpp -o ../Libraries/SocketLib/Telnet.o $(CXXFLAGS)
