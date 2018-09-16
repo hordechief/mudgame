@@ -52,9 +52,26 @@
 #include <string.h>             // for string manipulations
 using namespace std;            // use the std namespace
 
+#include "SocketLib/SocketLibSocket.h"
+using namespace SocketLib;
+
+#include "SocketLib/SocketLibSystem.h"
 
 int main()
-{
+{	
+	ListeningSocket _lsock;
+	_lsock.Listen(4000);
+	DataSocket _dsock;
+	_dsock = _lsock.Accept();
+	
+	char _buffer[128] = "Hello There!";
+//    _dsock.Send( buffer, strlen( buffer ));
+    _dsock.Receive(_buffer, 128);
+    cout << "Data received:" << endl;
+    cout << _buffer << endl;    
+
+	return 0;
+
     int err;                    // for getting errors
     int lsock;                  // listening socket
     vector<int> socketlist;     // list of sockets

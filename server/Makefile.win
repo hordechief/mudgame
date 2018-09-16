@@ -1,17 +1,17 @@
 # Project: server
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = server.o ../Libraries/SocketLib/SocketLibErrors.o ../Libraries/SocketLib/SocketLibSocket.o ../Libraries/SocketLib/SocketLibSystem.o ../Libraries/SocketLib/SocketSet.o ../Libraries/SocketLib/Telnet.o
-LINKOBJ  = server.o ../Libraries/SocketLib/SocketLibErrors.o ../Libraries/SocketLib/SocketLibSocket.o ../Libraries/SocketLib/SocketLibSystem.o ../Libraries/SocketLib/SocketSet.o ../Libraries/SocketLib/Telnet.o
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows "D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libws2_32.a"
-INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+OBJ      = server.o SocketLib/SocketLibErrors.o SocketLib/SocketLibSystem.o SocketLib/SocketLibSocket.o
+LINKOBJ  = server.o SocketLib/SocketLibErrors.o SocketLib/SocketLibSystem.o SocketLib/SocketLibSocket.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc  "D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libws2_32.a" -g3
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"e:/Computer/virtualenv/MUDGame/server/"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"e:/Computer/virtualenv/MUDGame/server/"
 BIN      = server.exe
-CXXFLAGS = $(CXXINCS) -lwsock32
-CFLAGS   = $(INCS) -lwsock32
+CXXFLAGS = $(CXXINCS) -g3 -lwsock32
+CFLAGS   = $(INCS) -g3 -lwsock32
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -27,17 +27,11 @@ $(BIN): $(OBJ)
 server.o: server.cpp
 	$(CPP) -c server.cpp -o server.o $(CXXFLAGS)
 
-../Libraries/SocketLib/SocketLibErrors.o: ../Libraries/SocketLib/SocketLibErrors.cpp
-	$(CPP) -c ../Libraries/SocketLib/SocketLibErrors.cpp -o ../Libraries/SocketLib/SocketLibErrors.o $(CXXFLAGS)
+SocketLib/SocketLibErrors.o: SocketLib/SocketLibErrors.cpp
+	$(CPP) -c SocketLib/SocketLibErrors.cpp -o SocketLib/SocketLibErrors.o $(CXXFLAGS)
 
-../Libraries/SocketLib/SocketLibSocket.o: ../Libraries/SocketLib/SocketLibSocket.cpp
-	$(CPP) -c ../Libraries/SocketLib/SocketLibSocket.cpp -o ../Libraries/SocketLib/SocketLibSocket.o $(CXXFLAGS)
+SocketLib/SocketLibSystem.o: SocketLib/SocketLibSystem.cpp
+	$(CPP) -c SocketLib/SocketLibSystem.cpp -o SocketLib/SocketLibSystem.o $(CXXFLAGS)
 
-../Libraries/SocketLib/SocketLibSystem.o: ../Libraries/SocketLib/SocketLibSystem.cpp
-	$(CPP) -c ../Libraries/SocketLib/SocketLibSystem.cpp -o ../Libraries/SocketLib/SocketLibSystem.o $(CXXFLAGS)
-
-../Libraries/SocketLib/SocketSet.o: ../Libraries/SocketLib/SocketSet.cpp
-	$(CPP) -c ../Libraries/SocketLib/SocketSet.cpp -o ../Libraries/SocketLib/SocketSet.o $(CXXFLAGS)
-
-../Libraries/SocketLib/Telnet.o: ../Libraries/SocketLib/Telnet.cpp
-	$(CPP) -c ../Libraries/SocketLib/Telnet.cpp -o ../Libraries/SocketLib/Telnet.o $(CXXFLAGS)
+SocketLib/SocketLibSocket.o: SocketLib/SocketLibSocket.cpp
+	$(CPP) -c SocketLib/SocketLibSocket.cpp -o SocketLib/SocketLibSocket.o $(CXXFLAGS)
